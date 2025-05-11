@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sentiment Analysis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white shadow-lg rounded-lg p-8 max-w-xl w-full">
+    <h1 class="text-2xl font-bold mb-4 text-center">Social Media Sentiment Analyzer</h1>
+    
+    <textarea id="inputText" rows="5" placeholder="Paste social media conversation here..." class="w-full p-4 border rounded mb-4"></textarea>
+    
+    <button onclick="analyzeSentiment()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Analyze Sentiment</button>
+    
+    <div id="result" class="mt-6 text-lg font-semibold text-center"></div>
+  </div>
+
+  <script>
+    function analyzeSentiment() {
+      const text = document.getElementById("inputText").value;
+      if (!text.trim()) {
+        document.getElementById("result").textContent = "Please enter some text.";
+        return;
+      }
+
+      // Simulate a sentiment response (replace this with actual API logic)
+      const sentiment = mockSentiment(text);
+      document.getElementById("result").textContent = `Detected Sentiment: ${sentiment}`;
+    }
+
+    function mockSentiment(text) {
+      const lowered = text.toLowerCase();
+      if (lowered.includes("love") || lowered.includes("great") || lowered.includes("awesome")) return "Positive 😊";
+      if (lowered.includes("hate") || lowered.includes("terrible") || lowered.includes("worst")) return "Negative 😠";
+      return "Neutral 😐";
+    }
+  </script>
+</body>
+</html>
